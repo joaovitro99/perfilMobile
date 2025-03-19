@@ -6,7 +6,13 @@ void main() {
   ));
 
 }
-class Layout extends StatelessWidget{
+class Layout extends StatefulWidget{
+  @override
+  State<Layout> createState() => _LayoutState();
+}
+
+class _LayoutState extends State<Layout> {
+  int nivel = 0;
   @override
   Widget build(BuildContext context){
     return Scaffold(
@@ -16,6 +22,16 @@ class Layout extends StatelessWidget{
         centerTitle: true,
         backgroundColor: Colors.grey[600],
       ),
+        floatingActionButton: FloatingActionButton(
+            onPressed: (){
+              setState(() {
+                nivel +=1;
+              });
+            },
+            child: Icon(Icons.add),
+      backgroundColor: Colors.grey[800],
+
+        ),
         body:Padding(
             padding: EdgeInsets.fromLTRB(30,40,30,0),
           child: Column(
@@ -49,7 +65,7 @@ class Layout extends StatelessWidget{
                   )),
               SizedBox(height:30.0),
               Text(
-                  'Níbe do jogador',
+                  'Nível do jogador',
                   style: TextStyle(
                     color: Colors.grey,
                     letterSpacing: 2.0,
@@ -57,7 +73,7 @@ class Layout extends StatelessWidget{
                   )),
               SizedBox(height:10.0),
               Text(
-                  '17',
+                  '$nivel',
                   style: TextStyle(
                     color: Colors.amberAccent[200],
                     letterSpacing: 2.0,
@@ -87,5 +103,6 @@ class Layout extends StatelessWidget{
     );
   }
 }
+
 
 
